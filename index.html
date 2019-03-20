@@ -1,0 +1,155 @@
+<html>
+<head>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<script src="/js/aframe.js"></script>
+	<script>
+		AFRAME.registerComponent('cursor-listener', {
+		schema: {
+			on: {type: 'string' },
+		},
+		
+		init: function(){
+		
+			var vid=document.getElementById('xmen');
+			this.el.addEventListener('mouseenter', function(evt) {
+				vid.play();
+			});
+			this.el.addEventListener('mouseleave', function(evt) {
+				vid.pause();
+			});
+		}
+		});
+	</script>
+	<script>
+		AFRAME.registerComponent('cursor-listener1', {
+		schema: {
+			on: {type: 'string' },
+		},
+		
+		init: function(){
+		
+			var vid=document.getElementById('sw8');
+			this.el.addEventListener('mouseenter', function(evt) {
+				vid.play();
+			});
+			this.el.addEventListener('mouseleave', function(evt) {
+				vid.pause();
+			});
+		}
+		});
+	</script>
+	<script>
+		AFRAME.registerComponent('cursor-listener2', {
+		schema: {
+			on: {type: 'string' },
+		},
+		
+		init: function(){
+		
+			var vid=document.getElementById('isle');
+			this.el.addEventListener('mouseenter', function(evt) {
+				vid.play();
+			});
+			this.el.addEventListener('mouseleave', function(evt) {
+				vid.pause();
+			});
+		}
+		});
+	</script>
+	
+</head>
+<body class="a-body ">
+
+<a-scene class="fullscreen"><canvas class="a-canvas" data-aframe-canvas="true" width="300" height="150"></canvas>
+	
+	<!--VIDEO-->
+	<a-assets>
+        <video id="xmen" src="/video/xmen.mp4"></video>		
+    </a-assets>
+	<a-assets>
+        <video id="sw8" src="/video/sw8.mp4"></video>		
+    </a-assets>
+	<a-assets>
+        <video id="isle" src="/video/isle.mp4"></video>		
+    </a-assets>
+	
+	<a-assets>
+		<a-asset-item id="seat-obj" src="/obj/model.obj"></a-asset-item>
+		<a-asset-item id="seat-mtl" src="/obj/materials.mtl"></a-asset-item>
+	</a-assets>
+	
+	<a-assets>
+		<img id="sala1" src="/img/sala1.jpg">
+	</a-assets>
+	<a-assets>
+		<img id="sala2" src="/img/sala2.jpg">
+	</a-assets>
+	<a-assets>
+		<img id="sala3" src="/img/sala3.jpg">
+	</a-assets>
+			
+	<a-video cursor-listener1="on: mouseover;" src="#sw8" width="5" height="3" position="0 2 -3.77" rotation="0 0 0" loop="true"></a-video>
+	<a-image src="#sala2" width="2" height="0.5" position="0 4 -3.77" rotation="0 0 0" ></a-image>
+	
+	<a-video cursor-listener="on: mouseover;" src="#xmen" width="5" height="3" position="-4.27 2 -2" rotation="0 45 0" loop="true"></a-video>
+	<a-image src="#sala1" width="2" height="0.5" position="-4.27 4 -2" rotation="0 45 0" ></a-image>
+	
+	<a-video cursor-listener2="on: mouseover;" src="#isle" width="5" height="3" position="4.27 2 -2" rotation="0 -45 0" loop="true"></a-video>
+	<a-image src="#sala3" width="2" height="0.5" position="4.27 4 -2" rotation="0 -45 0"></a-image>
+	
+	<!--PRIMA FILA-->
+	<a-entity position="-0.505 0.2 0" rotation="0 -90 0" geometry="width: 6; height: 6" obj-model="obj: #seat-obj; mtl: #seat-mtl"></a-entity>
+	<a-entity position="0 0.2 0" rotation="0 -90 0" geometry="width: 6; height: 6" obj-model="obj: #seat-obj; mtl: #seat-mtl"></a-entity>
+	<a-entity position="0.505 0.2 0" rotation="0 -90 0" geometry="width: 6; height: 6" obj-model="obj: #seat-obj; mtl: #seat-mtl"></a-entity>
+	<!--SECONDA FILA-->
+	<a-entity position="-0.505 0.4 0.5" rotation="0 -90 0" geometry="width: 6; height: 6" obj-model="obj: #seat-obj; mtl: #seat-mtl"></a-entity>
+	<a-entity position="0 0.4 0.5" rotation="0 -90 0" geometry="width: 6; height: 6" obj-model="obj: #seat-obj; mtl: #seat-mtl"></a-entity>
+	<a-entity position="0.505 0.4 0.5" rotation="0 -90 0" geometry="width: 6; height: 6" obj-model="obj: #seat-obj; mtl: #seat-mtl"></a-entity>
+	
+	
+	<!--CAMERA 0.1 E CURSORE-->
+	<a-camera near="0.1" user-height="0.1" position="0 0.1 -0.1" rotation="0 0 0">
+		<a-cursor id="cursor">
+		</a-cursor>
+	</a-camera>
+
+	<!--PIANO E PARETI-->
+	<a-plane color="#330000" position="0 -1 1" rotation="-90 0 0" width="15" height="10"></a-plane>
+	<a-plane color="#1f1f2e" position="0 2 -3.78" rotation="0 0 0" width="5" height="6"></a-plane>
+	<a-plane color="#1f1f2e" position="-4.27 2 -2.1" rotation="0 45 0" width="5.5" height="6"></a-plane>
+	<a-plane color="#1f1f2e" position="4.27 2 -2.1" rotation="0 -45 0" width="5.5" height="6"></a-plane>
+	<a-plane color="#000000" position="0 5 1" rotation="90 0 0" width="20" height="20"></a-plane>
+	<a-plane color="#1f1f2e" position="6.12 2 0" rotation="0 270 0" width="30" height="6"></a-plane>
+	<a-plane color="#1f1f2e" position="-6.12 2 0" rotation="0 90 0" width="30" height="6"></a-plane>
+	<a-sky color="#1f1f2e"></a-sky>
+
+	
+</a-scene>
+
+<script type="text/javascript">
+    var scene = document.querySelector('a-scene');
+    var vid = document.getElementById('xmen');
+	var vid1 = document.getElementById('sw8');
+	var vid2 = document.getElementById('isle');
+
+    if (scene.hasLoaded) {
+      run();
+    } else {
+      scene.addEventListener('loaded', run);
+    }
+
+    function run () {
+        scene.querySelector('.a-enter-vr-button').addEventListener('click', function(e){
+            
+			vid1.play();
+			vid1.pause();
+			vid.play();
+			vid.pause();
+			vid2.play();
+			vid2.pause();
+        }, false);
+    }
+</script>
+
+</body>
+</html>
